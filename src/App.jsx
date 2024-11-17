@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
     import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
     import { AuthProvider, useAuth } from './context/AuthContext'
     import Auth from './components/Auth'
-    import Home from './pages/Home'
-    import Analytics from './pages/Analytics'
+    import DashboardLayout from './components/dashboard/DashboardLayout'
     import Schedule from './pages/Schedule'
     import Grades from './pages/Grades'
     import Library from './pages/Library'
     import News from './pages/News'
+    import Analytics from './pages/Analytics'
+    import Profile from './pages/Profile'
     import Layout from './components/Layout'
 
     const PrivateRoute = ({ children }) => {
@@ -31,15 +32,7 @@ import { useEffect, useState } from 'react'
             <Route path="/" element={
               <PrivateRoute>
                 <Layout>
-                  <Home />
-                </Layout>
-              </PrivateRoute>
-            } />
-            
-            <Route path="/analytics" element={
-              <PrivateRoute>
-                <Layout>
-                  <Analytics />
+                  <DashboardLayout />
                 </Layout>
               </PrivateRoute>
             } />
@@ -72,6 +65,22 @@ import { useEffect, useState } from 'react'
               <PrivateRoute>
                 <Layout>
                   <News />
+                </Layout>
+              </PrivateRoute>
+            } />
+
+            <Route path="/analytics" element={
+              <PrivateRoute>
+                <Layout>
+                  <Analytics />
+                </Layout>
+              </PrivateRoute>
+            } />
+
+            <Route path="/profile" element={
+              <PrivateRoute>
+                <Layout>
+                  <Profile />
                 </Layout>
               </PrivateRoute>
             } />
